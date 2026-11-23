@@ -1,0 +1,10 @@
+# Never uploaded: the Google key, the history file (client data), your settings and the logs.
+secrets/*
+!secrets/PUT-sa-key.json-HERE.txt
+data/*
+!data/PUT-gmc_cache.sqlite-HERE.txt
+*.sqlite
+settings.env
+.env
+.venv/
+__pycache__/
