@@ -1,0 +1,59 @@
+# Store Directory (ADR-009 §1). One line per Merchant Center store the operator expects.
+# Source: the operator's Country-Region.xlsx (2026-11-10); country names normalised so that
+# stores sharing a country share one value (Canada EN / FR -> Canada), "Honk Kong" corrected.
+# The sync fetches every store listed here, including stores that are NOT sub-accounts of the
+# parent MCA (Spain, France 462116364, Chile, Netherlands 5438723367, Belgium NL / FR).
+# is_test = 1 hides a store from every dashboard view. Lines starting with # are ignored.
+sub_account_id,name,country,region,is_test
+518497884,LG Electronics Australia,Australia,Asia,0
+518461175,LG Electronics Austria,Austria,EU,0
+769437097,LG Electronics Canada EN,Canada,NA,0
+769437112,LG Electronics Canada FR,Canada,NA,0
+760908196,LG Electronics Colombia,Colombia,Latam,0
+518461568,LG Electronics Czech,Czech Republic,EU,0
+502259931,LG Electronics do Brasil,Brazil,Latam,0
+518795024,LG Electronics Egypt,Egypt,MEA,0
+575128919,LG Electronics Egypt AR,Egypt,MEA,0
+511159492,LG Deutschland,Germany,EU,0
+5335302272,LG Electronics Hong Kong CH,Hong Kong,Asia,0
+769437031,LG Electronics Hong Kong EN,Hong Kong,Asia,0
+518475535,LG Electronics Hungary,Hungary,EU,0
+445263036,LG Electronics India,India,India,0
+769440671,LG Electronics Indonesia,Indonesia,Asia,0
+5064404342,LG Electronics Japan,Japan,Asia,0
+5064404303,LG Electronics Kazakhstan,Kazakhstan,CIS,0
+5448249917,LG Electronics Malaysia,Malaysia,Asia,0
+518461913,LG Electronics Mexico,Mexico,Latam,0
+5453515776,LG Electronics Morocco,Morocco,MEA,0
+518461985,LG Electronics Netherlands,Netherlands,EU,0
+486646238,LG Electronics Panama,Panama,Latam,0
+5365800980,LG Electronics Philippines,Philippines,Asia,0
+138971758,LG Electronics Polska,Poland,EU,0
+5064455476,LG Electronics Portugal,Portugal,EU,0
+5332411538,LG Electronics SArabia EN,Saudi Arabia,MEA,0
+582864157,LG Electronics Saudi Arabia,Saudi Arabia,MEA,0
+769440677,LG Electronics Singapore,Singapore,Asia,0
+5408434818,LG Electronics South Africa,South Africa,MEA,0
+518498946,LG Electronics Sweden,Sweden,EU,0
+518459435,LG Electronics Swiss,Switzerland,EU,0
+575189424,LG Electronics Swiss FR,Switzerland,EU,0
+5064407667,LG Electronics Thailand,Thailand,Asia,0
+763749120,LG Electronics Türkiye,Türkiye,MEA,0
+518835696,LG Electronics Vietnam,Vietnam,Asia,0
+420558901,LG Official Online Shop,UK,EU,0
+227201400,LG Online Shop Italy,Italy,EU,0
+518811931,LG Taiwan 官方線上商城,Taiwan,Asia,0
+538647820,LG.com Peru,Peru,Latam,0
+527424218,LG Chile,Chile,Latam,0
+462116364,LG Electronics France,France,EU,0
+130445164,LG España,Spain,EU,0
+5815014784,LG Electronics Belgium NL,Belgium,EU,0
+5815616819,LG Electronics Belgium FR,Belgium,EU,0
+5438723367,LG Electronics Netherlands,Netherlands,EU,0
+# Under the parent MCA but not in Country-Region.xlsx; both report 0 products. Kept visible
+# as "No products" by the operator's decision (2026-11-10).
+5064455617,LG Electronics China,China,Asia,0
+5379623349,LG Electronics France,France,EU,0
+# Test stores: hidden from every dashboard view.
+745782871,TEST Feed,,,1
+5403497276,Test PH,,,1

@@ -1,0 +1,1 @@
+Copy the history file here as gmc_cache.sqlite (required, see INSTRUCTIONS.md step 6).
