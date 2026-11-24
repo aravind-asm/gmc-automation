@@ -52,6 +52,8 @@ const TABLE_WIDTH_PX = 1000;
 // table cell carries it itself, because Outlook desktop does not pass a font down from the outer box
 // and would show its own default size instead.
 const FONT = "font-family:'Segoe UI',Calibri,Arial,sans-serif;font-size:10pt;color:#1A1A1A;";
+// The one exception: the status definitions under table ② are a size smaller (operator, 2026-11-24).
+const DEFINITIONS_FONT = FONT.replace("font-size:10pt", "font-size:9pt");
 const CELL = "border:1px solid #BFBFBF;padding:3px 8px;";
 const HEADING = `${FONT}font-weight:bold;margin:18px 0 6px 0;`;
 
@@ -166,8 +168,10 @@ function underperformingAccounts(overview: Cell[][]): string {
 }
 
 // The Overview sheet's status line ("Healthy = approval rate above 95.0%  ·  Critical = …"), with
-// each status name in its bold colour as in the report. Empty if the line can't be found: the email
-// still goes, without it.
+// each status name in its bold colour as in the report, in 9 pt on two lines: Healthy and Critical
+// on the first, Warning and Minor on the second (operator, 2026-11-24). If the line ever has other
+// than four parts, they all stay on one line. Empty if the line can't be found: the email still
+// goes, without it.
 function statusDefinitions(overview: Cell[][]): string {
   let line = "";
   for (const row of overview) {
@@ -186,9 +190,13 @@ function statusDefinitions(overview: Cell[][]): string {
       ? `<b style="color:${DEFINITION_COLOURS[m[1]]};">${m[1]}</b>${esc(m[2])}`
       : esc(part);
   });
-  // As wide as the table above it, so the line wraps under the table rather than past it.
-  return `<p style="${FONT}color:${NOTE_TEXT};margin:6px 0 0 0;width:${TABLE_WIDTH_PX}px;max-width:${TABLE_WIDTH_PX}px;">`
-    + `${parts.join("&nbsp; &middot; &nbsp;")}</p>`;
+  const dot = "&nbsp; &middot; &nbsp;";
+  const text = parts.length === 4
+    ? `${parts.slice(0, 2).join(dot)}<br>${parts.slice(2).join(dot)}`
+    : parts.join(dot);
+  // As wide as the table above it, so a line wraps under the table rather than past it.
+  return `<p style="${DEFINITIONS_FONT}color:${NOTE_TEXT};margin:6px 0 0 0;width:${TABLE_WIDTH_PX}px;max-width:${TABLE_WIDTH_PX}px;">`
+    + `${text}</p>`;
 }
 
 // ③ The accounts whose approval rate fell the most since the earlier day (Spike Radar sheet).
